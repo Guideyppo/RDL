@@ -101,16 +101,11 @@ function detectLightColor(crop){
 
 // โหลด COCO-SSD
 let model;
-async function loadModel() {
-  resultText.innerText = "Loading model...";
-  model = await tf.loadGraphModel(
-    "https://tfhub.dev/tensorflow/efficientdet/lite0/detection/1",
-    { fromTFHub: true }
-  );
-  resultText.innerText = "EfficientDet model loaded ✅ Please upload an image.";
-}
-loadModel();
-
+cocoSsd.load().then(m=>{
+  model = m;
+  resultText.innerText="Model loaded ✅ Please upload an image.";
+});
+  
 fileInput.addEventListener('change', async (e)=>{
   const file=e.target.files[0];
   if(!file) return;
@@ -156,3 +151,4 @@ fileInput.addEventListener('change', async (e)=>{
 </body>
 
 </html>
+
