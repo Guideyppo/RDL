@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <title>🚦 Traffic Light Detector KMUTNB</title>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script type="module">
+import * as tf from "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js";
+import * as hub from "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tfjs-hub.min.js";
+
+const model = await tf.loadGraphModel(
+  "https://tfhub.dev/tensorflow/efficientdet/lite2/detection/1",
+  { fromTFHub: true }
+);
 <style>
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -151,5 +159,6 @@ fileInput.addEventListener('change', async (e)=>{
 </body>
 
 </html>
+
 
 
